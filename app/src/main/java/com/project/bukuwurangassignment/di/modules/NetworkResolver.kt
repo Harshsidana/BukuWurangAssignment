@@ -1,6 +1,9 @@
 package com.project.bukuwurangassignment.di.modules
 import com.project.bukuwurangassignment.data.remote.config.ApiManager
 import com.project.bukuwurangassignment.data.remote.config.BaseUrl
+import com.project.bukuwurangassignment.data.remote.sources.UsersService
+import com.project.bukuwurangassignment.data.repoImpl.UserDataRepoImpl
+import com.project.bukuwurangassignment.data.repository.UsersRepository
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -12,10 +15,6 @@ import javax.inject.Singleton
 
 @Module
 class NetworkResolver {
-
-    @Provides
-    @Named("apikey")
-    fun provideApiKey() : String = "3e7cc266ae2b0e0d78e279ce8e361736"
 
     @Singleton
     @Provides
@@ -36,6 +35,17 @@ class NetworkResolver {
 
     @Singleton
     @Provides
+    fun provideUserService(apiManager: ApiManager): UsersService = apiManager.userService
+    @Singleton
+    @Provides
     fun provideApiManager(retrofit: Retrofit) = ApiManager(retrofit)
+
+
+    @Singleton
+    @Provides
+    fun provideUserDataRepoImpl(
+        usersService: UsersService
+    ): UsersRepository =
+        UserDataRepoImpl(usersService)
 
 }

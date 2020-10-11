@@ -1,18 +1,19 @@
 package com.project.bukuwurangassignment
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import androidx.fragment.app.Fragment
+import com.project.bukuwurangassignment.base.BaseActivity
 import com.project.bukuwurangassignment.home.HomeFragment
 import com.project.bukuwurangassignment.profile.ProfileFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        setupBottomNavigationView()
+class MainActivity : BaseActivity() {
 
+
+    override val contentView: Int
+        get() = R.layout.activity_main
+
+    override fun setup() {
+        setupBottomNavigationView()
     }
 
     private fun setupBottomNavigationView() {
@@ -38,8 +39,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun changeFragment(
-            fragment: Fragment,
-            tagFragmentName: String
+        fragment: Fragment,
+        tagFragmentName: String
     ) {
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         val currentFragment: Fragment? = supportFragmentManager.primaryNavigationFragment
@@ -47,7 +48,7 @@ class MainActivity : AppCompatActivity() {
         if (currentFragment != null) fragmentTransaction.hide(currentFragment)
 
         var fragmentTemp: Fragment? =
-                supportFragmentManager.findFragmentByTag(tagFragmentName)
+            supportFragmentManager.findFragmentByTag(tagFragmentName)
 
         if (fragmentTemp == null) {
             fragmentTemp = fragment
