@@ -1,4 +1,4 @@
-package com.project.bukuwurangassignment.views
+package com.project.bukuwurangassignment.home
 
 import android.os.Bundle
 import com.project.bukuwurangassignment.R

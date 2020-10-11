@@ -2,12 +2,10 @@ package com.project.bukuwurangassignment
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import com.project.bukuwurangassignment.views.HomeFragment
-import com.project.bukuwurangassignment.views.ProfileFragment
+import com.project.bukuwurangassignment.home.HomeFragment
+import com.project.bukuwurangassignment.profile.ProfileFragment
 import kotlinx.android.synthetic.main.activity_main.*
-import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +22,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.homeFragment -> {
                     HomeFragment()
                 }
-
                 R.id.profileFragment -> {
                     ProfileFragment()
                 }

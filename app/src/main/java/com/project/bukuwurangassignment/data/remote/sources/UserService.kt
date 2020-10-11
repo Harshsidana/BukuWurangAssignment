@@ -7,6 +7,4 @@ import retrofit2.http.GET
 interface UsersService {
     @GET("/users")
     fun getUsers() : Single<Response>
-
-
 }

@@ -1,4 +1,4 @@
-package com.project.bukuwurangassignment.views
+package com.project.bukuwurangassignment.profile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
