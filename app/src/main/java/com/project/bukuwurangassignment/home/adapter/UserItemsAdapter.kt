@@ -29,14 +29,15 @@ class UserItemsAdapter : RecyclerView.Adapter<UserItemsAdapter.UserItemVh>() {
 
 
     class UserItemVh(private val view: View) : RecyclerView.ViewHolder(view) {
-
         fun bind(
             userItemResponse: Response.Data
         ) {
-            Toast.makeText(view.context,"Bind",Toast.LENGTH_LONG).show()
+            with(view)
+            {
+                tvName.text=userItemResponse.firstName
+                tvYear.text=userItemResponse.lastName.toString()
+            }
 
-            view.tvName.text=userItemResponse.firstName
-            view.tvYear.text=userItemResponse.lastName.toString()
         }
 
     }

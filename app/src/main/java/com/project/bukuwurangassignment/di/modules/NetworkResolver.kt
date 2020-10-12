@@ -4,6 +4,10 @@ import com.project.bukuwurangassignment.data.remote.config.BaseUrl
 import com.project.bukuwurangassignment.data.remote.sources.UsersService
 import com.project.bukuwurangassignment.data.repoImpl.UserDataRepoImpl
 import com.project.bukuwurangassignment.data.repository.UsersRepository
+import com.project.bukuwurangassignment.data.sharedPref.SharedPrefRepo
+import com.project.bukuwurangassignment.data.sharedPref.SharedPrefRepoImpl
+import com.project.bukuwurangassignment.data.sharedPref.SharedPrefs
+import com.project.bukuwurangassignment.useCases.SharedPrefUseCase
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -15,7 +19,11 @@ import javax.inject.Singleton
 
 @Module
 class NetworkResolver {
-
+    @Singleton
+    @Provides
+    fun provideSharedPrefRepo(
+        sharedPrefs: SharedPrefs
+    ): SharedPrefRepo = SharedPrefRepoImpl(sharedPrefs)
     @Singleton
     @Provides
     fun provideOkHttpClient() : OkHttpClient = OkHttpClient
@@ -47,5 +55,7 @@ class NetworkResolver {
         usersService: UsersService
     ): UsersRepository =
         UserDataRepoImpl(usersService)
+
+
 
 }
